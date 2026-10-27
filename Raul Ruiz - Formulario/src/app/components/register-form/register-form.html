@@ -1,0 +1,100 @@
+<div class="container my-4 register-container">
+  <h2 class="mb-4">Formulario de registro</h2>
+
+  <form #registerForm="ngForm" (ngSubmit)="register()">
+
+    <!-- Nombre -->
+    <div class="mb-3">
+      <label for="nombre" class="form-label">Nombre</label>
+      <input type="text" class="form-control" id="nombre" name="nombre"
+        placeholder="Tu nombre" [(ngModel)]="nombre" required>
+    </div>
+
+    <!-- Apellidos -->
+    <div class="mb-3">
+      <label for="apellidos" class="form-label">Apellidos</label>
+      <input type="text" class="form-control" id="apellidos" name="apellidos"
+        placeholder="Tus apellidos" [(ngModel)]="apellidos" required>
+    </div>
+
+    <!-- NIF -->
+    <div class="mb-3">
+      <label for="nif" class="form-label">NIF</label>
+      <input type="text" class="form-control" id="nif" name="nif"
+        placeholder="12345678A" [(ngModel)]="nif" required>
+    </div>
+
+    <!-- Email -->
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email"
+        placeholder="name@example.com" [(ngModel)]="email" required>
+    </div>
+
+    <!-- Teléfono -->
+    <div class="mb-3">
+      <label for="telefono" class="form-label">Teléfono</label>
+      <input type="tel" class="form-control" id="telefono" name="telefono"
+        placeholder="600123456" [(ngModel)]="telefono" required>
+    </div>
+
+    <!-- Sexo (radio buttons) -->
+    <div class="mb-3">
+      <label class="form-label d-block">Sexo</label>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="sexo" id="sexoHombre"
+          value="Hombre" [(ngModel)]="sexo" required>
+        <label class="form-check-label" for="sexoHombre">Hombre</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="sexo" id="sexoMujer"
+          value="Mujer" [(ngModel)]="sexo">
+        <label class="form-check-label" for="sexoMujer">Mujer</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="sexo" id="sexoOtro"
+          value="Otro" [(ngModel)]="sexo">
+        <label class="form-check-label" for="sexoOtro">Otro</label>
+      </div>
+    </div>
+
+    <!-- Cómo conoció la página (select) -->
+    <div class="mb-3">
+      <label for="comoConocio" class="form-label">¿Cómo conociste la página?</label>
+      <select class="form-select" id="comoConocio" name="comoConocio"
+        [(ngModel)]="comoConocio" required>
+        <option value="" disabled>Selecciona una opción</option>
+        @for (opcion of opcionesConocio; track opcion.value) {
+          <option [value]="opcion.value">{{ opcion.label }}</option>
+        }
+      </select>
+    </div>
+
+    <!-- Contraseña -->
+    <div class="mb-3">
+      <label for="password" class="form-label">Contraseña</label>
+      <input type="password" class="form-control" id="password" name="password"
+        [(ngModel)]="password" required>
+    </div>
+
+    <!-- Confirmar contraseña -->
+    <div class="mb-3">
+      <label for="confirmPassword" class="form-label">Confirmar contraseña</label>
+      <input type="password" class="form-control" id="confirmPassword" name="confirmPassword"
+        [(ngModel)]="confirmPassword" required>
+    </div>
+
+    <!-- Términos y condiciones (checkbox) -->
+    <div class="form-check mb-4">
+      <input class="form-check-input" type="checkbox" id="aceptaTerminos" name="aceptaTerminos"
+        [(ngModel)]="aceptaTerminos" required>
+      <label class="form-check-label" for="aceptaTerminos">
+        Acepto los términos y condiciones
+      </label>
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!aceptaTerminos">
+      Registro
+    </button>
+  </form>
+</div>
